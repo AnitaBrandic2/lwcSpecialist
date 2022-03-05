@@ -1,0 +1,16 @@
+{
+  "status": 0,
+  "result": {
+    "createdById": "0057Q000003bVmtQAE",
+    "createdByName": "Anita Brandic",
+    "createdDate": "2022-03-02T14:25:18.000Z",
+    "fileName": "messageChannels/BoatMessageChannel.messageChannel",
+    "fullName": "BoatMessageChannel",
+    "id": "1297Q000000sZacQAE",
+    "lastModifiedById": "0057Q000003bVmtQAE",
+    "lastModifiedByName": "Anita Brandic",
+    "lastModifiedDate": "2022-03-02T14:25:18.000Z",
+    "manageableState": "unmanaged",
+    "type": "LightningMessageChannel"
+  }
+}

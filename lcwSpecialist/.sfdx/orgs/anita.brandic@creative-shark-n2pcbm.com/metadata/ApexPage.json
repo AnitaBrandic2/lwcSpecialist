@@ -1,0 +1,16 @@
+{
+  "status": 0,
+  "result": {
+    "createdById": "0057Q000003bVmtQAE",
+    "createdByName": "Anita Brandic",
+    "createdDate": "2022-03-02T13:17:27.000Z",
+    "fileName": "pages/SimilarBoats.page",
+    "fullName": "SimilarBoats",
+    "id": "0667Q000007PIydQAG",
+    "lastModifiedById": "0057Q000003bVmtQAE",
+    "lastModifiedByName": "Anita Brandic",
+    "lastModifiedDate": "2022-03-02T13:17:31.000Z",
+    "manageableState": "installedEditable",
+    "type": "ApexPage"
+  }
+}

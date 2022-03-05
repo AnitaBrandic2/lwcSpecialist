@@ -1,7 +1,9 @@
 <template>
-    <lightning-card>
-        <lightning-map>
-            
-        </lightning-map>
+    <lightning-card class="slds-is-relatie">
+       <template if:true={isLoading}>
+           <lightning-spinner alternative-text="Loading" variant="brand" size="large"></lightning-spinner>
+       </template>
+       <lightning-map map-markers={mapMarkers}></lightning-map>
+       <div slot="footer">Top 10 only!</div>
     </lightning-card>
 </template>

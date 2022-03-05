@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
-import { APPLICATION_SCOPE, createMessageContext, MessageContext, publish, releaseMessageContext, subscribe, unsubscribe } from 'lightning/messageService';
+import { APPLICATION_SCOPE, MessageContext, subscribe } from 'lightning/messageService';
 import BOATMC from '@salesforce/messageChannel/BoatMessageChannel__c';
 const LONGITUDE_FIELD ='Boat__c.Geolocation__Longitude__s';
 const LATITUDE_FIELD = 'Boat__c.Geolocation__Latitude__s';
@@ -51,15 +51,22 @@ export default class BoatMap extends LightningElement {
   connectedCallback() {
     // recordId is populated on Record Pages, and this component
     // should not update when this component is on a record page.
-    if (this.subscription || thisr5.recordId) {
-      return;
-    }
+    
     // Subscribe to the message channel to retrieve the recordID and assign it to boatId.
     this.subscribeMC();
   }
 
   subscribeMC() {
-    let subscription = subscribe(this.messageContext, BOATMC, (message) => { this.boatId = message.recordId }, { scope: APPLICATION_SCOPE });
+    if (this.subscription || this.recordId) {
+      return;
+    }
+    // Subscribe to the message channel to retrieve the recordId and explicitly assign it to boatId.
+    this.subscription = subscribe(
+        this.messageContext,
+        BOATMC,
+        (message) => { this.boatId = message.recordId },
+        { scope: APPLICATION_SCOPE }
+      );
     }
 
   handleMessage(message) {
@@ -68,7 +75,7 @@ export default class BoatMap extends LightningElement {
 
   // Creates the map markers array with the current boat's location for the map.
   updateMap(Longitude, Latitude) {
-    this.mapMarkers = [Longitude,Latitude];
+    this.mapMarkers = [{location: { Latitude, Longitude }}];
   }
 
   // Getter method for displaying the map component, or a helper method.
